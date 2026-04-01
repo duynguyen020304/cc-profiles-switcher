@@ -1,0 +1,9 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://alpha.example.com",
+    "ANTHROPIC_AUTH_TOKEN": "alpha-token-1234567890",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "alpha-model",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "alpha-model",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "alpha-model"
+  }
+}
