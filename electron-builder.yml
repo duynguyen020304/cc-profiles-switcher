@@ -1,0 +1,79 @@
+appId: com.claudecode.profileswitcher
+productName: CC Profiles Switcher
+
+files:
+  - "**/*"
+  - "!**/*.{ts,tsx,map}"
+  - "!src/**/*"
+  - "!node_modules/.cache/**/*"
+  - "!node_modules/typescript/**/*"
+  - "!node_modules/@types/**/*"
+  - "!**/.*"
+  - "!.github/**/*"
+  - "!.omc/**/*"
+
+extraResources:
+  - from: "resources"
+    to: "resources"
+    filter:
+      - "**/*"
+
+directories:
+  output: dist
+  buildResources: build
+
+mac:
+  category: public.app-category.productivity
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+        - universal
+  hardenedRuntime: true
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  # Notarization requires Apple Developer account. Comment out if not available.
+  # notarize:
+  #   teamId: "${env.APPLE_TEAM_ID}"
+
+dmg:
+  contents:
+    - x: 130
+      y: 220
+    - x: 410
+      y: 220
+      type: link
+      path: /Applications
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+        - ia32
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: CC Profiles Switcher
+
+linux:
+  target:
+    - AppImage
+    - deb
+  category: Utility
+  maintainer: claudecode@example.com
+  synopsis: Claude Code Profile Switcher Desktop Widget
+
+deb:
+  priority: optional
+
+appImage:
+  systemIntegration: ask
+
+publish:
+  provider: github
+  releaseType: release
