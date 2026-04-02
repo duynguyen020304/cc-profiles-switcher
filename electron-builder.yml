@@ -72,7 +72,7 @@ deb:
   priority: optional
 
 appImage:
-  systemIntegration: ask
+  # systemIntegration removed - deprecated option
 
 publish:
   provider: github

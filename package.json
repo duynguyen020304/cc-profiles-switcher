@@ -2,6 +2,7 @@
   "name": "cc-profiles",
   "version": "1.0.0",
   "description": "Claude Code Profile Switcher - Desktop widget for switching Claude Code API profiles",
+  "author": "Duy Nguyen",
   "main": "./out/main/index.js",
   "scripts": {
     "dev": "electron-vite dev",
