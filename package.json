@@ -8,10 +8,16 @@
     "build": "electron-vite build",
     "start": "electron-vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "dist": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "better-sqlite3": "^12.8.0"
+    "better-sqlite3": "^12.8.0",
+    "electron-updater": "^6.3.9"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
@@ -21,6 +27,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.2.0",
     "electron": "^41.1.1",
+    "electron-builder": "^26.0.8",
     "electron-vite": "^5.0.0",
     "jsdom": "^29.0.1",
     "react": "^19.2.4",
