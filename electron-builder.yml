@@ -30,9 +30,11 @@ mac:
         - x64
         - arm64
         - universal
-  hardenedRuntime: true
-  entitlements: build/entitlements.mac.plist
-  entitlementsInherit: build/entitlements.mac.plist
+  # Code signing disabled - requires Apple Developer certificates
+  # Uncomment these when CSC_LINK and CSC_KEY_PASSWORD secrets are configured:
+  # hardenedRuntime: true
+  # entitlements: build/entitlements.mac.plist
+  # entitlementsInherit: build/entitlements.mac.plist
   # Notarization requires Apple Developer account. Comment out if not available.
   # notarize:
   #   teamId: "${env.APPLE_TEAM_ID}"
