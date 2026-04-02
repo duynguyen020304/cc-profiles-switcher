@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { Profile, SwitchHistoryEntry } from '../renderer/types/profile'
+import type { Profile, SwitchHistoryEntry, UpdateStatus } from '../renderer/types/profile'
 
 const ccProfilesApi = {
   /**
@@ -50,6 +50,42 @@ const ccProfilesApi = {
     const handler = (_event: Electron.IpcRendererEvent, profiles: Profile[]): void => callback(profiles)
     ipcRenderer.on('profiles:changed', handler)
     return () => ipcRenderer.removeListener('profiles:changed', handler)
+  },
+
+  // --- Update API ---
+
+  /**
+   * Get current app version.
+   */
+  getAppVersion: (): Promise<string> =>
+    ipcRenderer.invoke('update:getVersion'),
+
+  /**
+   * Get current update status.
+   */
+  getUpdateStatus: (): Promise<UpdateStatus> =>
+    ipcRenderer.invoke('update:getStatus'),
+
+  /**
+   * Manually check for updates.
+   */
+  checkForUpdates: (): Promise<void> =>
+    ipcRenderer.invoke('update:check'),
+
+  /**
+   * Install downloaded update (restarts app).
+   */
+  installUpdate: (): void =>
+    ipcRenderer.send('update:install'),
+
+  /**
+   * Subscribe to update status changes.
+   * Returns an unsubscribe function.
+   */
+  onUpdateStatusChanged: (callback: (status: UpdateStatus) => void): (() => void) => {
+    const handler = (_event: Electron.IpcRendererEvent, status: UpdateStatus): void => callback(status)
+    ipcRenderer.on('update:status-changed', handler)
+    return () => ipcRenderer.removeListener('update:status-changed', handler)
   }
 }
 

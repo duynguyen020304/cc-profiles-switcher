@@ -4,11 +4,13 @@ import ProfileList from './components/ProfileList'
 import ActiveProfileDetail from './components/ActiveProfileDetail'
 import { useProfiles } from './hooks/useProfiles'
 import { useActiveProfile } from './hooks/useActiveProfile'
+import { useUpdateStatus } from './hooks/useUpdateStatus'
 import './styles/globals.css'
 
 const App: React.FC = () => {
   const { profiles, loading, refresh } = useProfiles()
   const { activeProfile, switchingId, switchErrors, switchToProfile } = useActiveProfile(profiles)
+  const { status: updateStatus, appVersion, checkForUpdates, installUpdate } = useUpdateStatus()
 
   const handleMinimize = (): void => {
     // Use IPC or electron API to minimize
@@ -33,6 +35,10 @@ const App: React.FC = () => {
         onRefresh={refresh}
         onMinimize={handleMinimize}
         onClose={() => window.close()}
+        updateStatus={updateStatus}
+        appVersion={appVersion}
+        onUpdateCheck={checkForUpdates}
+        onInstallUpdate={installUpdate}
       />
 
       {loading && profiles.length === 0 ? (

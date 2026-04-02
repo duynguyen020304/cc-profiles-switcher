@@ -20,6 +20,16 @@ export interface SwitchHistoryEntry {
   success: number
 }
 
+// Update status type for UI display
+export type UpdateStatus =
+  | { state: 'idle' }
+  | { state: 'checking' }
+  | { state: 'available'; version: string; releaseDate?: string }
+  | { state: 'not-available'; currentVersion: string }
+  | { state: 'downloading'; percent: number; transferred: number; total: number }
+  | { state: 'downloaded'; version: string }
+  | { state: 'error'; message: string }
+
 export interface CCProfilesAPI {
   getProfiles: () => Promise<Profile[]>
   getActiveProfile: () => Promise<Profile | null>
@@ -28,6 +38,12 @@ export interface CCProfilesAPI {
   getSwitchHistory: () => Promise<SwitchHistoryEntry[]>
   onProfileSwitched: (cb: (profile: Profile) => void) => () => void
   onProfilesChanged: (cb: (profiles: Profile[]) => void) => () => void
+  // Update API
+  getAppVersion: () => Promise<string>
+  getUpdateStatus: () => Promise<UpdateStatus>
+  checkForUpdates: () => Promise<void>
+  installUpdate: () => void
+  onUpdateStatusChanged: (cb: (status: UpdateStatus) => void) => () => void
 }
 
 declare global {
