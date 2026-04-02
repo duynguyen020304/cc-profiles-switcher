@@ -24,7 +24,7 @@ const ProfileList: React.FC<ProfileListProps> = ({
         style={{
           flex: 1,
           overflowY: 'auto',
-          padding: 20,
+          padding: 12,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
@@ -33,7 +33,7 @@ const ProfileList: React.FC<ProfileListProps> = ({
         <p
           style={{
             fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-            fontSize: '0.82rem',
+            fontSize: '0.72rem',
             color: '#555',
             textAlign: 'center'
           }}
@@ -52,9 +52,9 @@ const ProfileList: React.FC<ProfileListProps> = ({
       style={{
         flex: 1,
         overflowY: 'auto',
-        padding: '8px 0',
+        padding: '4px 0',
         scrollbarWidth: 'thin',
-        scrollbarColor: 'rgba(255,255,255,0.1) transparent'
+        scrollbarColor: 'rgba(255,255,255,0.08) transparent'
       }}
     >
       {profiles.map((profile) => (

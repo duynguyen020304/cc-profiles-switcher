@@ -11,7 +11,7 @@ const ActiveProfileDetail: React.FC<ActiveProfileDetailProps> = ({ profile }) =>
     <div
       data-testid="active-profile-detail"
       style={{
-        padding: '14px 16px',
+        padding: '8px 10px',
         borderTop: '1px solid rgba(255,255,255,0.08)',
         backgroundColor: '#0a0a0a',
         flexShrink: 0
@@ -23,10 +23,10 @@ const ActiveProfileDetail: React.FC<ActiveProfileDetailProps> = ({ profile }) =>
             data-testid="active-profile-name"
             style={{
               fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-              fontSize: '0.8rem',
+              fontSize: '0.72rem',
               fontWeight: 600,
               color: '#f97316',
-              marginBottom: 10
+              marginBottom: 6
             }}
           >
             ▸ {profile.displayName}
@@ -42,11 +42,11 @@ const ActiveProfileDetail: React.FC<ActiveProfileDetailProps> = ({ profile }) =>
           data-testid="no-active-profile-message"
           style={{
             fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-            fontSize: '0.78rem',
+            fontSize: '0.68rem',
             color: '#555',
             fontStyle: 'italic',
             textAlign: 'center',
-            padding: '10px 0'
+            padding: '6px 0'
           }}
         >
           No profile active — using default settings.json

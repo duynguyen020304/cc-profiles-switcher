@@ -42,7 +42,7 @@ const UpdateIndicator: React.FC<{
   const notAvailable = status.state === 'not-available'
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
       {/* Check for update button */}
       <button
         onClick={onCheck}
@@ -52,8 +52,8 @@ const UpdateIndicator: React.FC<{
           background: 'none',
           border: 'none',
           cursor: isChecking || isDownloading ? 'wait' : 'pointer',
-          padding: '4px 6px',
-          borderRadius: 4,
+          padding: '2px 4px',
+          borderRadius: 3,
           color: hasError ? '#ef4444' : '#888',
           display: 'flex',
           alignItems: 'center',
@@ -66,11 +66,13 @@ const UpdateIndicator: React.FC<{
         onMouseLeave={(e) => { e.currentTarget.style.color = hasError ? '#ef4444' : '#888' }}
       >
         {isChecking ? (
-          <Spinner size={14} />
+          <Spinner size={12} />
         ) : (
-          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-            <path d="M21 3v5h-5" />
+          // Download/cloud icon for updates - distinct from refresh
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
         )}
       </button>
@@ -81,16 +83,16 @@ const UpdateIndicator: React.FC<{
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 4,
-            fontSize: 11,
+            gap: 3,
+            fontSize: 10,
             color: '#888',
-            minWidth: 60
+            minWidth: 50
           }}
         >
           <div
             style={{
-              width: 40,
-              height: 4,
+              width: 30,
+              height: 3,
               backgroundColor: '#333',
               borderRadius: 2,
               overflow: 'hidden'
@@ -118,27 +120,27 @@ const UpdateIndicator: React.FC<{
             background: '#f97316',
             border: 'none',
             cursor: 'pointer',
-            padding: '2px 8px',
-            borderRadius: 4,
+            padding: '1px 5px',
+            borderRadius: 3,
             color: '#fff',
-            fontSize: 11,
+            fontSize: 9,
             fontWeight: 500,
             display: 'flex',
             alignItems: 'center',
-            gap: 4,
+            gap: 3,
             WebkitAppRegion: 'no-drag' as const
           }}
         >
           {isDownloaded ? (
             <>
-              <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <svg width={8} height={8} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                 <path d="M5 12l5 5L20 7" />
               </svg>
               Install
             </>
           ) : (
             <>
-              <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <svg width={8} height={8} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                 <path d="M12 5v14m-7-7l7 7 7-7" />
               </svg>
               {status.version}
@@ -152,9 +154,9 @@ const UpdateIndicator: React.FC<{
         <span
           title={status.message}
           style={{
-            fontSize: 11,
+            fontSize: 9,
             color: '#ef4444',
-            maxWidth: 80,
+            maxWidth: 60,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap'
@@ -181,11 +183,11 @@ const TopBar: React.FC<TopBarProps> = ({
       className="top-bar"
       data-testid="top-bar"
       style={{
-        height: 40,
+        height: 32,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 12px',
+        padding: '0 8px',
         borderBottom: '1px solid rgba(255,255,255,0.08)',
         backgroundColor: '#111111',
         userSelect: 'none',
@@ -194,15 +196,15 @@ const TopBar: React.FC<TopBarProps> = ({
       }}
     >
       {/* Left: Icon + Title */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-        <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+        <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
           <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
           <path d="M15 9l-6 6m0-6l6 6" />
         </svg>
         <span
           style={{
             fontFamily: "'JetBrains Mono', 'Fira Code', 'Consolas', monospace",
-            fontSize: 13,
+            fontSize: 11,
             fontWeight: 600,
             color: '#e5e5e5',
             letterSpacing: '-0.01em'
@@ -233,7 +235,7 @@ const TopBar: React.FC<TopBarProps> = ({
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: '4px 6px',
+            padding: '2px 4px',
             borderRadius: 4,
             color: '#888',
             display: 'flex',
@@ -245,7 +247,7 @@ const TopBar: React.FC<TopBarProps> = ({
           onMouseEnter={(e) => { e.currentTarget.style.color = '#f97316' }}
           onMouseLeave={(e) => { e.currentTarget.style.color = '#888' }}
         >
-          <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+          <svg width={12} height={12} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
             <path d="M21 3v5h-5" />
           </svg>
@@ -259,7 +261,7 @@ const TopBar: React.FC<TopBarProps> = ({
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: '4px 7px',
+            padding: '2px 5px',
             borderRadius: 4,
             color: '#888',
             display: 'flex',
@@ -270,7 +272,7 @@ const TopBar: React.FC<TopBarProps> = ({
           onMouseEnter={(e) => { e.currentTarget.style.color = '#ccc' }}
           onMouseLeave={(e) => { e.currentTarget.style.color = '#888' }}
         >
-          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
             <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </button>
@@ -283,7 +285,7 @@ const TopBar: React.FC<TopBarProps> = ({
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            padding: '4px 7px',
+            padding: '2px 5px',
             borderRadius: 4,
             color: '#888',
             display: 'flex',
@@ -294,7 +296,7 @@ const TopBar: React.FC<TopBarProps> = ({
           onMouseEnter={(e) => { e.currentTarget.style.color = '#ef4444' }}
           onMouseLeave={(e) => { e.currentTarget.style.color = '#888' }}
         >
-          <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+          <svg width={10} height={10} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>

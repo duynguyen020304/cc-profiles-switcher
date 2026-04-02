@@ -14,18 +14,18 @@ const ModelMappingRow: React.FC<ModelMappingRowProps> = ({ label, value, testId 
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'baseline',
-        padding: '6px 0',
-        borderBottom: '1px solid rgba(255,255,255,0.04)'
+        padding: '3px 0',
+        borderBottom: '1px solid rgba(255,255,255,0.03)'
       }}
     >
       <span
         style={{
           fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-          fontSize: '0.7rem',
+          fontSize: '0.62rem',
           textTransform: 'uppercase',
           color: '#666',
           fontWeight: 500,
-          letterSpacing: '0.06em'
+          letterSpacing: '0.05em'
         }}
       >
         {label}
@@ -33,7 +33,7 @@ const ModelMappingRow: React.FC<ModelMappingRowProps> = ({ label, value, testId 
       <span
         style={{
           fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-          fontSize: '0.78rem',
+          fontSize: '0.7rem',
           color: value ? '#2dd4bf' : '#444',
           wordBreak: 'break-all',
           textAlign: 'right',

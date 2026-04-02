@@ -30,12 +30,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 10,
-        padding: '10px 14px',
-        margin: '4px 8px',
-        borderRadius: 8,
-        borderLeft: `3px solid ${isActive ? '#f97316' : 'transparent'}`,
-        backgroundColor: isActive ? 'rgba(249, 115, 22, 0.08)' : 'rgba(255,255,255,0.02)',
+        gap: 6,
+        padding: '6px 8px',
+        margin: '2px 4px',
+        borderRadius: 6,
+        borderLeft: `2px solid ${isActive ? '#f97316' : 'transparent'}`,
+        backgroundColor: isActive ? 'rgba(249, 115, 22, 0.06)' : 'rgba(255,255,255,0.01)',
         cursor: isSwitching ? 'not-allowed' : isActive ? 'default' : 'pointer',
         transition: 'all 0.15s ease',
         borderRight: '1px solid transparent',
@@ -47,12 +47,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       <span
         data-testid={`profile-card-${profile.id}-active-dot`}
         style={{
-          width: 8,
-          height: 8,
+          width: 6,
+          height: 6,
           borderRadius: '50%',
           backgroundColor: isActive ? '#22c55e' : '#333',
           flexShrink: 0,
-          boxShadow: isActive ? '0 0 6px rgba(34,197,94,0.5)' : 'none'
+          boxShadow: isActive ? '0 0 4px rgba(34,197,94,0.5)' : 'none'
         }}
       />
 
@@ -61,7 +61,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
         <div
           style={{
             fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-            fontSize: '0.85rem',
+            fontSize: '0.78rem',
             fontWeight: isActive ? 600 : 400,
             color: isActive ? '#f97316' : '#d4d4d4',
             whiteSpace: 'nowrap',
@@ -75,9 +75,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           data-testid={`profile-card-${profile.id}-base-url`}
           style={{
             fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-            fontSize: '0.72rem',
+            fontSize: '0.65rem',
             color: '#666',
-            marginTop: 2,
+            marginTop: 1,
             whiteSpace: 'nowrap',
             overflow: 'hidden',
             textOverflow: 'ellipsis'
@@ -90,22 +90,18 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       {/* Switch area */}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
         {isSwitching ? (
-          <div data-testid={`switch-spinner-${profile.id}`} style={{ padding: '2px 8px' }}>
-            <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth={2}>
-              <circle cx="12" cy="12" r="10" strokeDasharray="31.4" strokeDashoffset="10" transform="rotate(90 12 12)" style={{ animation: 'spin 0.8s linear infinite' }} />
-              Sorry, SVG animation requires CSS. Using a simpler spinner:
-            </svg>
-            <span style={{ color: '#666', fontSize: '0.75rem' }}>⏳</span>
+          <div data-testid={`switch-spinner-${profile.id}`} style={{ padding: '1px 4px' }}>
+            <span style={{ color: '#666', fontSize: '0.65rem' }}>⏳</span>
           </div>
         ) : isActive ? (
           <span
             style={{
               fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-              fontSize: '0.68rem',
+              fontSize: '0.6rem',
               color: '#22c55e',
               fontWeight: 600,
               textTransform: 'uppercase',
-              letterSpacing: '0.04em'
+              letterSpacing: '0.03em'
             }}
           >
             Active
@@ -118,13 +114,13 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               onSwitch(profile.id)
             }}
             style={{
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: 4,
-              padding: '3px 10px',
+              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 3,
+              padding: '2px 6px',
               color: '#aaa',
               fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-              fontSize: '0.68rem',
+              fontSize: '0.6rem',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
               transition: 'all 0.15s ease'
@@ -134,7 +130,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
               ;(e.target as HTMLElement).style.color = '#f97316'
             }}
             onMouseLeave={(e) => {
-              ;(e.target as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)'
+              ;(e.target as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)'
               ;(e.target as HTMLElement).style.color = '#aaa'
             }}
           >
@@ -145,12 +141,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <div
             data-testid={`switch-error-${profile.id}`}
             style={{
-              marginTop: 4,
+              marginTop: 2,
               fontFamily: "'JetBrains Mono', 'Fira Code', Consolas, monospace",
-              fontSize: '0.65rem',
+              fontSize: '0.58rem',
               color: '#ef4444',
               textAlign: 'center',
-              maxWidth: 120
+              maxWidth: 100
             }}
           >
             {switchError}
