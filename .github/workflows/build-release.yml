@@ -55,12 +55,6 @@ jobs:
         run: npm run dist
         env:
           GH_TOKEN: ${{ secrets.github_token }}
-          # macOS signing (optional - skip if secrets not set)
-          CSC_LINK: ${{ secrets.mac_certs }}
-          CSC_KEY_PASSWORD: ${{ secrets.mac_certs_password }}
-          # Windows signing (optional - skip if secrets not set)
-          WIN_CSC_LINK: ${{ secrets.windows_certs }}
-          WIN_CSC_KEY_PASSWORD: ${{ secrets.windows_certs_password }}
 
       - name: Upload artifacts (Windows)
         if: startsWith(matrix.os, 'windows')
